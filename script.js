@@ -21,11 +21,10 @@ const nameHeading = document.createElement(`h3`);
 const occupationHeading = document.createElement(`h3`);
 const priceHeading = document.createElement(`h3`);
 const nameList = document.createElement(`section`);
-const occupationList = document.createElement(`ul`);
-const priceList = document.createElement(`ul`);
+const occupationList = document.createElement(`section`);
+const priceList = document.createElement(`section`);
 
 title.textContent = `Freelancer Forum`;
-averageMessage.textContent = `The average starting price is TODO`;
 subHeading.textContent = `Available Freelancers`;
 nameHeading.textContent = `Name`;
 occupationHeading.textContent = `Occupation`;
@@ -52,9 +51,27 @@ container.style = `display: flex; justify-content: space-around`
 
 for (i = 0; i < freelancers.length; i++) {
 	nameList.appendChild(document.createElement(`p`));
-	// console.log(freelancers[i].name);
 	nameList.children[i].textContent = freelancers[i].name;
 }
+
+for (i = 0; i < freelancers.length; i++) {
+	occupationList.appendChild(document.createElement(`p`));
+	occupationList.children[i].textContent = freelancers[i].occupation;
+}
+
+for (i = 0; i < freelancers.length; i++) {
+	priceList.appendChild(document.createElement(`p`));
+	console.log(freelancers[i].price)
+	priceList.children[i].textContent = `$ ${freelancers[i].price} / hr`;
+}
+
+let totPrice = 0
+for (i = 0; i < freelancers.length; i++) {
+	totPrice += freelancers[i].price
+}
+let avPrice = totPrice / freelancers.length
+averageMessage.textContent = `The average starting price is ${avPrice}`;
+console.log(avPrice)
 
 // freelancers.forEach(element => {
 // 	nameList.appendChild(document.createElement(`li`));
